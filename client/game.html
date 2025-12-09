@@ -93,17 +93,17 @@
 
   <div class="menu" id="sidebarMenu">
     <h2>Menu</h2>
-    <a id="homeBtn">🏠 Home</a>
-    <a id="profileBtn">👤 Profile</a>
-    <a id="leaderBtn">🏆 Leaderboard</a>
-    <a id="helpBtn">❓ Help</a>
-    <a id="logoutBtn">🚪 Logout</a>
+    <a id="homeBtn"> Home</a>
+    <a id="profileBtn"> Profile</a>
+    <a id="leaderBtn"> Leaderboard</a>
+    <a id="helpBtn"> Help</a>
+    <a id="logoutBtn"> Logout</a>
   </div>
 
   <div class="popup" id="helpPopup">
     <h3>Help</h3>
-    <p>📞 9515071636</p>
-    <p>✉️ boppanamaheswari@gmail.com</p>
+    <p> 9515071636</p>
+    <p> boppanamaheswari@gmail.com</p>
     <button onclick="closePopup('helpPopup')">Close</button>
   </div>
 
@@ -129,7 +129,7 @@
   </div>
 
  <script>
-  // Sidebar menu
+
   const menuBtn = document.getElementById("menuBtn");
   const sidebarMenu = document.getElementById("sidebarMenu");
   menuBtn.addEventListener("click", () => sidebarMenu.classList.toggle("active"));
@@ -147,7 +147,7 @@
   document.getElementById("leaderBtn").onclick=()=>showLeaderboard();
   document.getElementById("logoutBtn").onclick=()=>logout();
 
-  // Fake login if not present
+
   if(!localStorage.getItem("user")){
     const name=prompt("Enter your name:");
     const email=prompt("Enter your email:");
@@ -157,7 +157,7 @@
   const user = JSON.parse(localStorage.getItem("user"));
   const quizBox=document.getElementById("quiz-box");
 
-  // Quiz Questions
+ 
   const quizData = [
     { question:"A stranger asks for your OTP claiming to be from your bank. What should you do?",
       options:["Share the OTP","Ignore and report the call","Ask for their ID","Give half of the OTP"],
@@ -194,14 +194,14 @@
   let currentQuestion=0;
   let score=0;
 
-  // Prevent reattempt
+
   if(user.attempted){
     quizBox.innerHTML=`<h2>🎉 You already completed the quiz!</h2><p>Your score: ${user.score}/10</p>`;
   } else {
     loadQuestion();
   }
 
-  // Load question
+
   function loadQuestion(){
     const q=quizData[currentQuestion];
     document.getElementById("question").textContent=`Q${currentQuestion+1}. ${q.question}`;
@@ -217,7 +217,7 @@
     document.getElementById("next-btn").style.display="none";
   }
 
-  // Check answer and show story
+
   function checkAnswer(selected){
     const q=quizData[currentQuestion];
     const optionButtons=document.querySelectorAll(".options button");
@@ -229,7 +229,7 @@
 
     if(selected===q.correct){
       score++;
-      updateLeaderboardLive(score);  // ✅ update leaderboard immediately
+      updateLeaderboardLive(score);  
     }
 
     const exp=document.getElementById("explanation");
@@ -238,7 +238,7 @@
     document.getElementById("next-btn").style.display="inline-block";
   }
 
-  // Go to next question
+ 
   function nextQuestion(){
     currentQuestion++;
     if(currentQuestion<quizData.length){
@@ -253,7 +253,7 @@
     }
   }
 
-  // ✅ Update leaderboard live after every correct answer
+
   function updateLeaderboardLive(currentScore){
     const name = user.name;
     const email = user.email;
@@ -272,13 +272,13 @@
     refreshLeaderboardDisplay();
   }
 
-  // ✅ Show leaderboard popup
+ 
   function showLeaderboard(){
     refreshLeaderboardDisplay();
     showPopup("leaderPopup");
   }
 
-  // ✅ Refresh leaderboard list
+ 
   function refreshLeaderboardDisplay(){
     const list = document.getElementById("leaderList");
     let board = JSON.parse(localStorage.getItem("leaderboard")) || [];
@@ -296,7 +296,7 @@
     });
   }
 
-  // ✅ Profile display
+  
   function showProfile(){
     const u=JSON.parse(localStorage.getItem("user"));
     document.getElementById("pname").textContent="Name: "+u.name;
@@ -305,7 +305,7 @@
     showPopup("profilePopup");
   }
 
-  // ✅ Logout
+  
   function logout(){
     localStorage.removeItem("user");
     window.location.href="index.html";
