@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digi Rakshak - Login</title>
 
-  <!-- Google Login -->
+ 
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <style>
@@ -104,7 +104,7 @@
       <p>Learn Safe Digital Payments the Fun Way!</p>
     </div>
 
-    <!-- Login Form -->
+   
     <div class="form-container" id="login-form">
       <h2>Login</h2>
       <input type="email" id="login-email" placeholder="Enter your email" required />
@@ -113,7 +113,7 @@
 
       <p>Don't have an account? <span class="link" onclick="toggleForm()">Sign Up</span></p>
 
-      <!-- Google Login -->
+     
       <div id="g_id_onload"
            data-client_id="YOUR_GOOGLE_CLIENT_ID"
            data-login_uri="http://localhost:5000/api/google-login"
@@ -129,7 +129,7 @@
       </div>
     </div>
 
-    <!-- Signup Form -->
+   
     <div class="form-container hidden" id="signup-form">
       <h2>Sign Up</h2>
       <input type="text" id="signup-name" placeholder="Full Name" required />
@@ -147,7 +147,7 @@
       document.getElementById("signup-form").classList.toggle("hidden");
     }
 
-    // ✅ Validation Function (for both login and signup)
+  
     function validateEmail(email) {
       const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
       return gmailPattern.test(email);
@@ -157,7 +157,7 @@
       return password.length >= 6;
     }
 
-    // ✅ Signup with Validation
+   
     function registerUser() {
       const name = document.getElementById("signup-name").value.trim();
       const email = document.getElementById("signup-email").value.trim();
@@ -191,7 +191,7 @@
       .catch(() => alert("Server error"));
     }
 
-    // ✅ Login with Validation
+   
     function loginUser() {
       const email = document.getElementById("login-email").value.trim();
       const password = document.getElementById("login-password").value.trim();
